@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { PostHogProvider } from "./providers/posthog";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,7 +23,9 @@ export default function RootLayout({
         crossOrigin="anonymous"
       />
       <body className={` `}>
-        <div className="lg:px-24 sm:px-5">{children}</div>
+        <div className="lg:px-24 sm:px-5">
+          <PostHogProvider>{children}</PostHogProvider>
+        </div>
       </body>
     </html>
   );
