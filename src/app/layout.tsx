@@ -14,6 +14,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link
+        rel="preload"
+        href="/fonts/Satoshi-Black.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
       <body className={` `}>
         <div className="lg:px-24 sm:px-5">{children}</div>
       </body>
