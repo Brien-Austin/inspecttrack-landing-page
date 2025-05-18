@@ -18,7 +18,7 @@ const TextRotator: React.FC<TextRotatorProps> = ({ texts, interval }) => {
   }, [texts, interval]);
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden h-40 lg:h-screen">
       <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-center lg:text-left leading-tight md:leading-tight lg:leading-tight tracking-tight break-words">
         {texts[index]}
       </h1>

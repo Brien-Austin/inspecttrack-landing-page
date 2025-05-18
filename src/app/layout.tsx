@@ -23,9 +23,7 @@ export default function RootLayout({
         crossOrigin="anonymous"
       />
       <body className={` `}>
-        <div className="lg:px-24 sm:px-5">
-          <PostHogProvider>{children}</PostHogProvider>
-        </div>
+        <div className="lg:px-24 sm:px-5">{children}</div>
       </body>
     </html>
   );
