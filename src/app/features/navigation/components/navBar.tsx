@@ -11,14 +11,12 @@ import Button from "@/app/common/components/button";
 const NavigationBar = () => {
   const [isVideoOpened, setVideoOpened] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAboutOpen, setAboutOpen] = useState(false);
+  const [isTeamOpen, setTeamOpen] = useState(false);
+  const [isContactOpen, setContactOpen] = useState(false);
 
-  function openVideoModal() {
-    setVideoOpened(true);
-  }
-
-  function toggleMenu() {
-    setIsMenuOpen(!isMenuOpen);
-  }
+  const openVideoModal = () => setVideoOpened(true);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <>
@@ -36,9 +34,24 @@ const NavigationBar = () => {
 
         {/* Desktop navigation */}
         <div className="hidden md:flex gap-6 lg:gap-10 items-center">
-          <h1 className="font-medium text-sm">About</h1>
-          <h1 className="font-medium text-sm">Team</h1>
-          <h1 className="font-medium text-sm">Contact</h1>
+          <h1
+            onClick={() => setAboutOpen(true)}
+            className="font-medium text-sm cursor-pointer"
+          >
+            About
+          </h1>
+          <h1
+            onClick={() => setTeamOpen(true)}
+            className="font-medium text-sm cursor-pointer"
+          >
+            Team
+          </h1>
+          <h1
+            onClick={() => setContactOpen(true)}
+            className="font-medium text-sm cursor-pointer"
+          >
+            Contact
+          </h1>
           <Button
             ctaAction={openVideoModal}
             ctaText="Watch Demo video"
@@ -50,9 +63,24 @@ const NavigationBar = () => {
         {isMenuOpen && (
           <div className="absolute top-16 left-0 right-0 bg-white shadow-lg z-50 md:hidden">
             <div className="flex flex-col gap-4 p-4">
-              <h1 className="font-medium text-sm py-2">About</h1>
-              <h1 className="font-medium text-sm py-2">Team</h1>
-              <h1 className="font-medium text-sm py-2">Contact</h1>
+              <h1
+                onClick={() => setAboutOpen(true)}
+                className="font-medium text-sm py-2 cursor-pointer"
+              >
+                About
+              </h1>
+              <h1
+                onClick={() => setTeamOpen(true)}
+                className="font-medium text-sm py-2 cursor-pointer"
+              >
+                Team
+              </h1>
+              <h1
+                onClick={() => setContactOpen(true)}
+                className="font-medium text-sm py-2 cursor-pointer"
+              >
+                Contact
+              </h1>
               <div className="pt-2">
                 <Button
                   ctaAction={openVideoModal}
@@ -64,6 +92,7 @@ const NavigationBar = () => {
           </div>
         )}
 
+        {/* Demo Video Modal */}
         <Modal
           isOpen={isVideoOpened}
           onClose={() => setVideoOpened(false)}
@@ -85,6 +114,39 @@ const NavigationBar = () => {
               secondaryText="This video contains all the functionalities and features of Collector login"
               videoUrl="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
             />
+          </div>
+        </Modal>
+
+        {/* About Modal */}
+        <Modal
+          isOpen={isAboutOpen}
+          onClose={() => setAboutOpen(false)}
+          title="About"
+        >
+          <div className="space-y-4">
+            {/* Fill this section with about content */}
+          </div>
+        </Modal>
+
+        {/* Team Modal */}
+        <Modal
+          isOpen={isTeamOpen}
+          onClose={() => setTeamOpen(false)}
+          title="Team"
+        >
+          <div className="space-y-4">
+            {/* Fill this section with team content */}
+          </div>
+        </Modal>
+
+        {/* Contact Modal */}
+        <Modal
+          isOpen={isContactOpen}
+          onClose={() => setContactOpen(false)}
+          title="Contact"
+        >
+          <div className="space-y-4">
+            {/* Fill this section with contact content */}
           </div>
         </Modal>
       </div>

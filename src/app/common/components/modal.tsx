@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import { X, Star } from "lucide-react";
 import Button from "./button";
+import { useRouter } from "next/navigation";
 
 type ModalProps = {
   isOpen: boolean;
@@ -19,9 +21,11 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
   if (!isOpen) return null;
 
+  const router = useRouter();
+
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50"
+      className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 p-5"
       onClick={onClose}
     >
       <div
@@ -35,10 +39,16 @@ const Modal: React.FC<ModalProps> = ({
 
         <div className="flex justify-between items-center mt-6 pt-4 border-t border-gray-200">
           <Button
+            ctaTextColor="black"
             ctaText="Star on Github"
-            buttonColor="bg-linear-to-r from-yellow-300 to-yellow-400"
-            innerBorderColor="border-yellow-200"
-            ctaAction={() => {}}
+            buttonColor="white"
+            iconColor="blue"
+            innerBorderColor="border-blue-600"
+            ctaAction={() => {
+              router.push(
+                "https://github.com/Brien-Austin/inspect-track-flutter"
+              );
+            }}
             ctaIcon={Star}
             iconPosition="left"
           />

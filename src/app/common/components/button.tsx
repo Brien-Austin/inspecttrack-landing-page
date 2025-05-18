@@ -3,6 +3,8 @@ import React from "react";
 
 interface ButtonProps {
   ctaText: string;
+  ctaTextColor?: string;
+  borderColor?: string;
   ctaAction: () => void;
   ctaIcon?: LucideIcon;
   iconPosition?: "left" | "right";
@@ -14,6 +16,8 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   ctaAction,
   ctaText,
+  ctaTextColor,
+  borderColor,
   ctaIcon: CtaIcon,
   iconPosition = "right",
   buttonColor = "bg-linear-to-r from-blue-500 to-blue-600",
@@ -23,7 +27,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       onClick={ctaAction}
-      className={`font-medium text-sm text-white rounded-md cursor-pointer ${buttonColor}`}
+      className={`font-medium text-sm  rounded-md cursor-pointer ${buttonColor}`}
     >
       <div
         className={`m-[2px] px-3 py-2 rounded-sm border-[1.5px]  ${
@@ -33,7 +37,12 @@ const Button: React.FC<ButtonProps> = ({
         {CtaIcon && iconPosition === "left" && (
           <CtaIcon color={iconColor} size={15} className="animate-bounce" />
         )}
-        {ctaText}
+        <h1
+          className={`${ctaTextColor ? `text-${ctaTextColor}` : "text-white"}`}
+        >
+          {" "}
+          {ctaText}
+        </h1>
         {CtaIcon && iconPosition === "right" && (
           <CtaIcon color={iconColor} size={15} className="animate-bounce" />
         )}
